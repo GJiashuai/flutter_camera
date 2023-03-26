@@ -261,7 +261,7 @@ abstract class CameraPlatform extends PlatformInterface {
 
   /// Set the setFocusModeLockedWithLensPosition for the selected camera.
 
-  Future<void> setFocusModeLockedWithLensPosition(double lensPosition) {
+  Future<void> setFocusModeLockedWithLensPosition(int cameraId,double lensPosition) {
     throw UnimplementedError('setFocusModeLockedWithLensPosition() is not implemented.');
   }
 
