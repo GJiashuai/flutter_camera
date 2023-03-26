@@ -496,7 +496,7 @@ class AVFoundationCamera extends CameraPlatform {
   }
 
   @override
-  Future<void> setFocusModeLockedWithLensPosition(double lensPosition, <void> completionHandler) async {
+  Future<void> setFocusModeLockedWithLensPosition(double lensPosition) async {
     try {
       await _channel.invokeMethod<double>(
         'setFocusModeLockedWithLensPosition',
