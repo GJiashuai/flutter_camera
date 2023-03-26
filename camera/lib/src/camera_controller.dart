@@ -58,19 +58,19 @@ class CameraValue {
   /// Creates a new camera controller state for an uninitialized controller.
   const CameraValue.uninitialized()
       : this(
-          isInitialized: false,
-          isRecordingVideo: false,
-          isTakingPicture: false,
-          isStreamingImages: false,
-          isRecordingPaused: false,
-          flashMode: FlashMode.auto,
-          exposureMode: ExposureMode.auto,
-          exposurePointSupported: false,
-          focusMode: FocusMode.auto,
-          focusPointSupported: false,
-          deviceOrientation: DeviceOrientation.portraitUp,
-          isPreviewPaused: false,
-        );
+    isInitialized: false,
+    isRecordingVideo: false,
+    isTakingPicture: false,
+    isStreamingImages: false,
+    isRecordingPaused: false,
+    flashMode: FlashMode.auto,
+    exposureMode: ExposureMode.auto,
+    exposurePointSupported: false,
+    focusMode: FocusMode.auto,
+    focusPointSupported: false,
+    deviceOrientation: DeviceOrientation.portraitUp,
+    isPreviewPaused: false,
+  );
 
   /// True after [CameraController.initialize] has completed successfully.
   final bool isInitialized;
@@ -178,7 +178,7 @@ class CameraValue {
       exposureMode: exposureMode ?? this.exposureMode,
       focusMode: focusMode ?? this.focusMode,
       exposurePointSupported:
-          exposurePointSupported ?? this.exposurePointSupported,
+      exposurePointSupported ?? this.exposurePointSupported,
       focusPointSupported: focusPointSupported ?? this.focusPointSupported,
       deviceOrientation: deviceOrientation ?? this.deviceOrientation,
       lockedCaptureOrientation: lockedCaptureOrientation == null
@@ -224,12 +224,11 @@ class CameraValue {
 /// To show the camera preview on the screen use a [CameraPreview] widget.
 class CameraController extends ValueNotifier<CameraValue> {
   /// Creates a new camera controller in an uninitialized state.
-  CameraController(
-    this.description,
-    this.resolutionPreset, {
-    this.enableAudio = true,
-    this.imageFormatGroup,
-  }) : super(const CameraValue.uninitialized());
+  CameraController(this.description,
+      this.resolutionPreset, {
+        this.enableAudio = true,
+        this.imageFormatGroup,
+      }) : super(const CameraValue.uninitialized());
 
   /// The properties of the camera device controlled by this controller.
   final CameraDescription description;
@@ -259,7 +258,7 @@ class CameraController extends ValueNotifier<CameraValue> {
   StreamSubscription<CameraImageData>? _imageStreamSubscription;
   FutureOr<bool>? _initCalled;
   StreamSubscription<DeviceOrientationChangedEvent>?
-      _deviceOrientationSubscription;
+  _deviceOrientationSubscription;
 
   /// Checks whether [CameraController.dispose] has completed successfully.
   ///
@@ -283,7 +282,7 @@ class CameraController extends ValueNotifier<CameraValue> {
     }
     try {
       final Completer<CameraInitializedEvent> initializeCompleter =
-          Completer<CameraInitializedEvent>();
+      Completer<CameraInitializedEvent>();
 
       _deviceOrientationSubscription = CameraPlatform.instance
           .onDeviceOrientationChanged()
@@ -314,16 +313,17 @@ class CameraController extends ValueNotifier<CameraValue> {
       value = value.copyWith(
         isInitialized: true,
         previewSize: await initializeCompleter.future
-            .then((CameraInitializedEvent event) => Size(
-                  event.previewWidth,
-                  event.previewHeight,
-                )),
+            .then((CameraInitializedEvent event) =>
+            Size(
+              event.previewWidth,
+              event.previewHeight,
+            )),
         exposureMode: await initializeCompleter.future
             .then((CameraInitializedEvent event) => event.exposureMode),
         focusMode: await initializeCompleter.future
             .then((CameraInitializedEvent event) => event.focusMode),
         exposurePointSupported: await initializeCompleter.future.then(
-            (CameraInitializedEvent event) => event.exposurePointSupported),
+                (CameraInitializedEvent event) => event.exposurePointSupported),
         focusPointSupported: await initializeCompleter.future
             .then((CameraInitializedEvent event) => event.focusPointSupported),
       );
@@ -531,7 +531,7 @@ class CameraController extends ValueNotifier<CameraValue> {
 
     try {
       final XFile file =
-          await CameraPlatform.instance.stopVideoRecording(_cameraId);
+      await CameraPlatform.instance.stopVideoRecording(_cameraId);
       value = value.copyWith(
         isRecordingVideo: false,
         recordingOrientation: const Optional<DeviceOrientation>.absent(),
@@ -629,15 +629,16 @@ class CameraController extends ValueNotifier<CameraValue> {
   /// The supplied [zoom] value should be between 1.0 and the maximum supported
   /// zoom level returned by the `getMaxZoomLevel`. Throws an `CameraException`
   /// when an illegal zoom level is suplied.
-  Future<void> setFocusModeLockedWithLensPosition(double lengthPosition) {
+  Future<void> setFocusModeLockedWithLensPosition(int cameraId,
+      double lengthPosition) {
     _throwIfNotInitialized('setFocusModeLockedWithLensPosition');
     try {
-      return CameraPlatform.instance.setFocusModeLockedWithLensPosition(lengthPosition);
+      return CameraPlatform.instance.setFocusModeLockedWithLensPosition(
+          lengthPosition);
     } on PlatformException catch (e) {
       throw CameraException(e.code, e.message);
     }
   }
-
 
 
   /// Sets the flash mode for taking pictures.
@@ -677,9 +678,9 @@ class CameraController extends ValueNotifier<CameraValue> {
         point == null
             ? null
             : Point<double>(
-                point.dx,
-                point.dy,
-              ),
+          point.dx,
+          point.dy,
+        ),
       );
     } on PlatformException catch (e) {
       throw CameraException(e.code, e.message);
@@ -813,9 +814,9 @@ class CameraController extends ValueNotifier<CameraValue> {
         point == null
             ? null
             : Point<double>(
-                point.dx,
-                point.dy,
-              ),
+          point.dx,
+          point.dy,
+        ),
       );
     } on PlatformException catch (e) {
       throw CameraException(e.code, e.message);
