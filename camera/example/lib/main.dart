@@ -190,13 +190,13 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
           controller!,
           child: LayoutBuilder(
               builder: (BuildContext context, BoxConstraints constraints) {
-            return GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onScaleStart: _handleScaleStart,
-              onScaleUpdate: _handleScaleUpdate,
-              onTapDown: (TapDownDetails details) =>
-                  onViewFinderTap(details, constraints),
-            );
+            // return GestureDetector(
+            //   behavior: HitTestBehavior.opaque,
+            //   onScaleStart: _handleScaleStart,
+            //   onScaleUpdate: _handleScaleUpdate,
+            //   onTapDown: (TapDownDetails details) =>
+            //       onViewFinderTap(details, constraints),
+            // );
           }),
         ),
       );

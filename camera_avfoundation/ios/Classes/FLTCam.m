@@ -1072,6 +1072,29 @@ NSString *const errorMethod = @"error";
   [result sendSuccess];
 }
 
+- (void)setFocusModeLockedWithLensPosition:(CGFloat)lensPosition Result:(FLTThreadSafeFlutterResult *)result {
+  CGFloat maxAvailableZoomFactor = [self getMaxAvailableZoomFactor];
+  CGFloat minAvailableZoomFactor = [self getMinAvailableZoomFactor];
+
+  if (maxAvailableZoomFactor < zoom || minAvailableZoomFactor > zoom) {
+    NSString *errorMessage = [NSString
+        stringWithFormat:@"Zoom level out of bounds (zoom level should be between %f and %f).",
+                         minAvailableZoomFactor, maxAvailableZoomFactor];
+    [result sendErrorWithCode:@"ZOOM_ERROR" message:errorMessage details:nil];
+    return;
+  }
+
+  NSError *error = nil;
+  if (![_captureDevice lockForConfiguration:&error]) {
+    [result sendError:error];
+    return;
+  }
+  _captureDevice.videoZoomFactor = zoom;
+  [_captureDevice unlockForConfiguration];
+
+  [result sendSuccess];
+}
+
 - (CGFloat)getMinAvailableZoomFactor {
   return _captureDevice.minAvailableVideoZoomFactor;
 }

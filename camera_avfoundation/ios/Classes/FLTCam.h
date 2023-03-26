@@ -105,6 +105,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getMaxZoomLevelWithResult:(FLTThreadSafeFlutterResult *)result;
 - (void)getMinZoomLevelWithResult:(FLTThreadSafeFlutterResult *)result;
 - (void)setZoomLevel:(CGFloat)zoom Result:(FLTThreadSafeFlutterResult *)result;
+- (void)setFocusModeLockedWithLensPosition:(CGFloat)lensPosition Result:(FLTThreadSafeFlutterResult *)result;
 - (void)setUpCaptureSessionForAudio;
 
 @end

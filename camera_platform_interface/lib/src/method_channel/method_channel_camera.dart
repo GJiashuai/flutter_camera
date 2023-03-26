@@ -489,6 +489,21 @@ class MethodChannelCamera extends CameraPlatform {
   }
 
   @override
+  Future<void> setFocusModeLockedWithLensPosition(double lensPosition, <void> completionHandler) async {
+    try {
+      await _channel.invokeMethod<double>(
+        'setFocusModeLockedWithLensPosition',
+        <String, dynamic>{
+          'lensPosition': lensPosition,
+          'completionHandler': completionHandler,
+        },
+      );
+    } on PlatformException catch (e) {
+      throw CameraException(e.code, e.message);
+    }
+  }
+
+  @override
   Future<void> pausePreview(int cameraId) async {
     await _channel.invokeMethod<double>(
       'pausePreview',

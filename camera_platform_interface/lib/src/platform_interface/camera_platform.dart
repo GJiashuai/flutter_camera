@@ -259,6 +259,12 @@ abstract class CameraPlatform extends PlatformInterface {
     throw UnimplementedError('setZoomLevel() is not implemented.');
   }
 
+  /// Set the setFocusModeLockedWithLensPosition for the selected camera.
+
+  Future<void> setFocusModeLockedWithLensPosition(double lensPosition, <void> completionHandler) {
+    throw UnimplementedError('setFocusModeLockedWithLensPosition() is not implemented.');
+  }
+
   /// Pause the active preview on the current frame for the selected camera.
   Future<void> pausePreview(int cameraId) {
     throw UnimplementedError('pausePreview() is not implemented.');
