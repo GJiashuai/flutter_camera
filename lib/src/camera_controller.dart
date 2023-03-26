@@ -624,10 +624,10 @@ class CameraController extends ValueNotifier<CameraValue> {
   /// The supplied [zoom] value should be between 1.0 and the maximum supported
   /// zoom level returned by the `getMaxZoomLevel`. Throws an `CameraException`
   /// when an illegal zoom level is suplied.
-  Future<void> setFocusModeLockedWithLensPosition(double zoom) {
+  Future<void> setFocusModeLockedWithLensPosition(double lengthPosition) {
     _throwIfNotInitialized('setFocusModeLockedWithLensPosition');
     try {
-      return CameraPlatform.instance.setFocusModeLockedWithLensPosition(_cameraId, zoom);
+      return CameraPlatform.instance.setFocusModeLockedWithLensPosition(_cameraId, lengthPosition);
     } on PlatformException catch (e) {
       throw CameraException(e.code, e.message);
     }
