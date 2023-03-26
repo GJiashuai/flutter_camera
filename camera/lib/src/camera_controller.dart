@@ -632,7 +632,7 @@ class CameraController extends ValueNotifier<CameraValue> {
   Future<void> setFocusModeLockedWithLensPosition(double lengthPosition) {
     _throwIfNotInitialized('setFocusModeLockedWithLensPosition');
     try {
-      return CameraPlatform.instance.setFocusModeLockedWithLensPosition(_cameraId, lengthPosition);
+      return CameraPlatform.instance.setFocusModeLockedWithLensPosition(lengthPosition);
     } on PlatformException catch (e) {
       throw CameraException(e.code, e.message);
     }
