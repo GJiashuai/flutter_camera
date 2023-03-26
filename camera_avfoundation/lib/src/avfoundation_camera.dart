@@ -501,8 +501,7 @@ class AVFoundationCamera extends CameraPlatform {
       await _channel.invokeMethod<double>(
         'setFocusModeLockedWithLensPosition',
         <String, dynamic>{
-          'lensPosition': lensPosition,
-          'completionHandler': completionHandler,
+          'lensPosition': lensPosition
         },
       );
     } on PlatformException catch (e) {
