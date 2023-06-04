@@ -71,6 +71,8 @@ public class CameraFeatures {
         cameraFeatureFactory.createResolutionFeature(
             cameraProperties, resolutionPreset, cameraProperties.getCameraName()));
     cameraFeatures.setZoomLevel(cameraFeatureFactory.createZoomLevelFeature(cameraProperties));
+    cameraFeatures.setZoomLevel(cameraFeatureFactory.createZoomLevelFeature(cameraProperties));
+
     return cameraFeatures;
   }
 
