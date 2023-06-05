@@ -213,9 +213,9 @@
       CGFloat zoom = ((NSNumber *)argsMap[@"zoom"]).floatValue;
       [_camera setZoomLevel:zoom Result:result];
     } else if ([@"setFocusModeLockedWithLensPosition" isEqualToString:call.method]) {
-        CGFloat lensPosition = ((NSNumber *)argsMap[@"lensPosition"]).floatValue;
-        [_camera setFocusModeLockedWithLensPosition:lensPosition Result:result];
-    } else if ([@"setFlashMode" isEqualToString:call.method]) {
+       CGFloat lensPosition = ((NSNumber *)argsMap[@"lensPosition"]).floatValue;
+       [_camera setFocusModeLockedWithLensPosition:lensPosition Result:result];
+    }else if ([@"setFlashMode" isEqualToString:call.method]) {
       [_camera setFlashModeWithResult:result mode:call.arguments[@"mode"]];
     } else if ([@"setExposureMode" isEqualToString:call.method]) {
       [_camera setExposureModeWithResult:result mode:call.arguments[@"mode"]];

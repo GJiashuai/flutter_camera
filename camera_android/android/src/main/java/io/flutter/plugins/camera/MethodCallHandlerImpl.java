@@ -315,6 +315,25 @@ final class MethodCallHandlerImpl implements MethodChannel.MethodCallHandler {
           }
           break;
         }
+     case "setFocusModeLockedWithLensPosition":
+        {
+          assert camera != null;
+
+          Double zoom = call.argument("lensPosition");
+
+          if (zoom == null) {
+            result.error(
+                "lensPosition", "lensPosition is called without specifying a zoom level.", null);
+            return;
+          }
+
+          try {
+            camera.setFocusModeLockedWithLensPosition(result, lensPosition.floatValue());
+          } catch (Exception e) {
+            handleException(e, result);
+          }
+          break;
+        }
       case "lockCaptureOrientation":
         {
           PlatformChannel.DeviceOrientation orientation =
