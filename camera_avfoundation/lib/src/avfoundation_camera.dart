@@ -500,15 +500,12 @@ class AVFoundationCamera extends CameraPlatform {
     try {
       await _channel.invokeMethod<double>(
         'setFocusModeLockedWithLensPosition',
-        <String, dynamic>{
-          'lensPosition': lensPosition
-        },
+        <String, dynamic>{'lensPosition': lensPosition},
       );
     } on PlatformException catch (e) {
       throw CameraException(e.code, e.message);
     }
   }
-
 
   @override
   Future<void> pausePreview(int cameraId) async {
